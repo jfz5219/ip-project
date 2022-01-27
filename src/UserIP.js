@@ -10,6 +10,7 @@ import { LitElement, html, css } from 'lit';
 export class UserIP extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
+    /// //////////// What is tag name used for?
     return 'user-ip';
   }
 
@@ -22,13 +23,16 @@ export class UserIP extends LitElement {
     // Java or other Object Oriented Programming Language
     // so for this one, we're storing a reference to the API endpoint
     // so that if it ever changed it would be easier to update
-    this.ipLookUp = 'https://ip-fast.com/api/ip/?format=json&location=False';
+    this.ipLookUp = 'https://ip-fast.com/api/ip/?format=json&location=True';
   }
 
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
   static get properties() {
     return {
       ip: { type: String, reflect: true },
+      // country: { type: String, reflect: true },
+      // city: { type: String, reflect: true },
+      location: { type: String, reflect: true },
     };
   }
 
@@ -58,6 +62,8 @@ export class UserIP extends LitElement {
           // this structure can be whatever you want in detail, a lot of times
           // I either make detail : this
           // or detail.value = whatever the important value is to send
+
+          /// ////////////Is detail really nessecary?
           detail: {
             value: this.ip,
           },
@@ -99,6 +105,9 @@ export class UserIP extends LitElement {
       })
       .then(data => {
         this.ip = data.ip;
+        // this.country = data.country;
+        // this.city = data.city;
+        this.location = `${data.city}, ${data.country}`;
         return data;
       });
   }
@@ -137,8 +146,10 @@ export class UserIP extends LitElement {
   // this serves very little purpose but at least we're rendering the info
   render() {
     return html` <ul>
-      <li><strong class="ipaddress">IP address:</strong> ${this.ip}</li>
-      <li></li>
+      <li>
+        <strong class="ipaddress">IP address:</strong> ${this.ip}
+        <strong class="ipaddress"> -- Location:</strong> ${this.location}
+      </li>
     </ul>`;
   }
 }
