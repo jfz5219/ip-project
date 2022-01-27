@@ -1,0 +1,37 @@
+[
+    {
+        "location": "Westgate 300",
+        "start_time": "2022-1-24T12:00:00.000Z",
+        "end_time": "2022-1-24T13:00:00.000Z",
+        "details": "some details",
+        "order": 1
+    },
+    {
+        "location": "Westgate 301",
+        "start_time": "2022-1-24T15:00:00.000Z",
+        "end_time": "2022-1-24T15:30:00.000Z",
+        "details": "some details",
+        "order": 2
+    },
+    {
+        "location": "Westgate 302",
+        "start_time": "2022-1-24T17:00:00.000Z",
+        "end_time": "2022-1-24T17:45:00.000Z",
+        "details": "some details",
+        "order": 3
+    },
+    {
+        "location": "Westgate 303",
+        "start_time": "2022-1-25T10:30:00.000Z",
+        "end_time": "2022-1-25T11:30:00.000Z",
+        "details": "some details",
+        "order": 4
+    },
+    {
+        "location": "Westgate 304",
+        "start_time": "2022-1-25T14:00:00.000Z",
+        "end_time": "2022-1-25T15:00:00.000Z",
+        "details": "some details",
+        "order": 5
+    }
+]
