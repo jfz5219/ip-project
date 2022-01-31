@@ -41,12 +41,13 @@
   <script type="module">
     // this makes user-ip web component work
     import {UserIP} from "./src/UserIP.js";
-    // we make an instance of the class
+
     const getIPClass = new UserIP();
     // we wait 100ms and then we ask the class for the user's IP
     setTimeout(async() => {
       console.log(await getIPClass.updateUserIP());
     }, 100);
+
   </script>
   <h1>Location based on IP address as a map</h1>
   <location-from-ip></location-from-ip>

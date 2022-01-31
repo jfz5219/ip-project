@@ -1,6 +1,7 @@
 // dependencies / things imported
 import { LitElement, html, css } from 'lit';
 import { UserIP } from './UserIP.js';
+import '@lrnwebcomponents/wikipedia-query/wikipedia-query.js';
 
 export class LocationFromIP extends LitElement {
   static get tag() {
@@ -10,15 +11,17 @@ export class LocationFromIP extends LitElement {
   constructor() {
     super();
     this.UserIpInstance = new UserIP();
-    this.locationEndpoint = 'https://freegeoip.app/json/';
-    this.long = 10.305385;
-    this.lat = 77.923029;
+    this.locationEndpoint = 'http://ip-api.com/json/';
+    this.long = null;
+    this.lat = null;
   }
 
   static get properties() {
     return {
-      lat: { type: Number },
-      long: { type: Number },
+      lat: { type: Number, reflect: true },
+      long: { type: Number, reflect: true },
+      state: { type: String, reflect: true },
+      city: { type: String, reflect: true },
     };
   }
 
@@ -35,14 +38,19 @@ export class LocationFromIP extends LitElement {
     return fetch(this.locationEndpoint + userIPData.ip)
       .then(resp => {
         if (resp.ok) {
+
           return resp.json();
         }
         return false;
       })
       .then(data => {
-        console.log(data);
-        this.long = data.longitude;
-        this.lat = data.latitude;
+
+        this.long = data.lon;
+        // test: console.log(data.lon);
+        this.lat = data.lat;
+        this.state = data.regionName;
+        this.city = data.city;
+        
         return data;
       });
   }
@@ -65,7 +73,13 @@ export class LocationFromIP extends LitElement {
     // this function runs every time a properties() declared variable changes
     // this means you can make new variables and then bind them this way if you like
     const url = `https://maps.google.com/maps?q=${this.lat},${this.long}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
-    return html`<iframe title="Where you are" src="${url}"></iframe> `;
+    
+    return html`
+    <iframe title="Where you are" src="${url}"></iframe> <a href="https://www.google.com/maps/@long,lat,14z">Google Maps</a> 
+    
+    <wikipedia-query search="${this.city}, ${this.state}"></wikipedia-query>
+    
+    `;
   }
 }
 

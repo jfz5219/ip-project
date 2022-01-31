@@ -105,8 +105,6 @@ export class UserIP extends LitElement {
       })
       .then(data => {
         this.ip = data.ip;
-        // this.country = data.country;
-        // this.city = data.city;
         this.location = `${data.city}, ${data.country}`;
         return data;
       });
