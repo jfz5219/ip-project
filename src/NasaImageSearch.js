@@ -130,9 +130,7 @@ export class NasaImageSearch extends LitElement {
                         ${item.description}<br />Secondary Creator:
                         ${item.secondary_creator}
                       </li>
-                      <div>
-                        <br />
-                      </div>
+                      <br />
                     </div>
                   `
                 )}

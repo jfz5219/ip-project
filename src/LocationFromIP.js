@@ -1,7 +1,7 @@
 // dependencies / things imported
 import { LitElement, html, css } from 'lit';
 import { UserIP } from './UserIP.js';
-import '@lrnwebcomponents/wikipedia-query/wikipedia-query.js';
+import '@lrnwebcomponents/wikipedia-query';
 
 export class LocationFromIP extends LitElement {
   static get tag() {
@@ -44,7 +44,6 @@ export class LocationFromIP extends LitElement {
         return false;
       })
       .then(data => {
-
         this.long = data.lon;
         // test: console.log(data.lon);
         this.lat = data.lat;
@@ -78,7 +77,6 @@ export class LocationFromIP extends LitElement {
     <iframe title="Where you are" src="${url}"></iframe> <a href="https://www.google.com/maps/@long,lat,14z">Google Maps</a> 
     
     <wikipedia-query search="${this.city}, ${this.state}"></wikipedia-query>
-    
     `;
   }
 }
