@@ -5,65 +5,81 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="Description" content="Put your description here.">
+  <script type="module">
+    import { html, render } from 'lit';
+    import "./src/NasaImageSearch.js";
+</script>
+<link rel="stylesheet" type="text/css" href="style.css">
   <base href="/">
-  <style>
-    html,
-    body {
-      margin: 0;
-      padding: 50px;
-      font-family: sans-serif;
-    }
-    hello-world {
-      border: 10px solid black;
-    }
-    hello-world[name="cool"] {
-      color: orange;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-    user-ip[ip="24.48.0.1"] {
-      background-color: orange;
-    }
-  </style>
-  <title>Project one: </title>
+  <title>Lab 4/5</title>
 </head>
 
 <body>
-  <h1>Hello Worlds tags</h1>
-  <hello-world name="cool"></hello-world>
-  <hello-world name="Jeb"><p>Please clap..</p></hello-world>
-  <hello-world name="partner"></hello-world>
-  <script type="module">
-    import "./src/HelloWorld.js";
-  </script>
-  <h1>IP look up</h1>
-  <user-ip></user-ip>
-  <user-ip ip="24.48.0.1"></user-ip>
-  <script type="module">
-    // this makes user-ip web component work
-    import {UserIP} from "./src/UserIP.js";
+      <!-- term -->
+      <div id="top">
 
-    const getIPClass = new UserIP();
-    // we wait 100ms and then we ask the class for the user's IP
-    setTimeout(async() => {
-      console.log(await getIPClass.updateUserIP());
-    }, 100);
+        <div id="heading">
+          <h1>Nasa Image Search</h1>
+        </div>
 
-  </script>
-  <h1>Location based on IP address as a map</h1>
-  <location-from-ip></location-from-ip>
-  <script type="module">
-    import "./src/LocationFromIP.js";
-  </script>
-  <h1>Example event binding</h1>
-  <script type="module">
-    import {html, render} from "lit";
-    function addIpTag(e) {
-      const userIp = document.createElement("user-ip");
-      document.querySelector("#demo").appendChild(userIp);
-    }
-    render(html`<button @click="${addIpTag}">Call the IP API</button>`, document.querySelector("#demo"));
-  </script>
-  <div id="demo"></div>
+        <div id="wrapToCircle">
+        <div class="label">
+          <label class="label" for="termInput">Enter search term:</label>
+          <input name="termInput" type="text" id="searchTerm" value="Moon Landing">
+        </div>
+      <br>
+
+      <!-- index -->
+      <div class="label">
+        <label for="numInput">Page number:</label>
+        <input name="numInput" type="text" id="page_num" value="1" style="width: 30px">
+      </div>
+      <br>
+
+      <!-- start year and end year -->
+      <div class="label">
+        <label for="years">Start year to end year:</label>
+        <input name = "years" id="startYear" type="number" min="1800" max="2200" step="1" value="1800"/>
+        <label for="years">to</label>
+        <input name="years" id="endYear" type="number" min="1800" max="2200" step="1" value="2022"/>
+      </div>
+      <br>  
+
+    </div>
+
+    <div id="button">
+      <button id="search">Search</button>
+    </div>
+      
+    </div>
+
+    <!-- check box -->
+    <div id="check_box">
+      <label for="checkbox">Return Data Only</label>
+      <input id="checkBox" name="checkbox" type="checkbox" style="width:20px; height:20px;">
+    </div>
+
+      <div id="bottom">
+      <nasa-image-search id="nasa_search_element"></nasa-image-search>   
+      </div>
+
+      <script>
+
+        // event listener for search button
+        document.querySelector("#search").addEventListener("click", e => {
+          document.querySelector("#nasa_search_element").term = document.querySelector("#searchTerm").value;
+          document.querySelector("#nasa_search_element").index = document.querySelector("#page_num").value;
+          document.querySelector("#nasa_search_element").start_year = document.querySelector("#startYear").value;
+          document.querySelector("#nasa_search_element").end_year = document.querySelector("#endYear").value;
+          document.querySelector("#nasa_search_element").getData();
+        });
+
+        // event listener for check box
+        document.querySelector("#checkBox").addEventListener("change", e=> {
+          let tag = document.querySelector("#nasa_search_element");
+          tag.checked = !tag.checked;
+        })
+      </script>
 </body>
 
 </html>

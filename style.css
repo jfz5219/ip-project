@@ -1,0 +1,108 @@
+body{
+    background-color: rgb(14, 14, 14);
+  }
+  
+  #top{
+  
+      border: solid #212b38;
+      border-width: 5px;
+  
+      color: #E0E7EF;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #303D4C;
+      margin: auto;
+      margin-top: 100px;
+      height: 520px;
+      width: 520px;
+  
+      padding: 30px;
+  
+      margin-bottom: 50px;
+  
+      outline: 5px solid hsl(52, 3%, 50%);
+      box-shadow:
+      0 0 0 10px hsl(0, 0%, 25%),
+      0 0 0 15px hsl(0, 0%, 20%),
+      0 0 0 20px hsl(0, 0%, 15%),
+      0 0 0 25px hsl(0, 0%, 10%),
+      0 0 0 30px hsl(0, 0%, 5%);
+      border-radius: 100%;
+  }
+  
+  #wrapToCircle{
+      
+      width: 75%;
+      margin: 0 auto;
+      padding-top: 9%;
+      /* position: relative; */
+  }
+  
+  #heading{
+      padding-top: 10%;
+      text-align: center;
+  }
+  
+  h1::first-letter {
+      font-size: 150%;
+      color: #ba1111;
+      
+    }
+  
+  input{
+      border: none;
+      padding: 5px 11px;
+      border-radius: 7px;
+      box-shadow: inset 1px -1px 2px 0px rgba(0, 0, 0, 0.5);
+  }
+  
+  #button{
+      width: 160px;
+      padding-top: 65px;
+      margin: 0 auto;
+  }
+  
+  button{
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      border-radius: 40px;
+      padding: 15px 60px;
+      border: none;
+      color:aliceblue;
+      background-color: rgb(28, 36, 128);
+      box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+  }
+  
+  button:hover{
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      border-radius: 40px;
+      padding: 15px 60px;
+      border: none;
+      color:aliceblue;
+      background-color: rgb(5, 10, 72);
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  } 
+  
+  
+  .label{
+      padding-bottom: 0px;
+      margin: auto;
+  }
+
+  #list{
+    color: white;
+    max-width:1000px; 
+    margin-left:auto; 
+    margin-right:auto; 
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  }
+
+  #check_box{
+    text-align: center;
+    width: 200px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    color: white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+
+  }
